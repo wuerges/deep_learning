@@ -108,12 +108,22 @@ for epoch in range(10):
             #print('==>>> epoch: {}, batch index: {}, train loss: {:.6f}'.format(epoch, batch, l2.data[0]))
 
             fig = plt.figure()
-            fig.add_subplot(1, 3, 1)
-            plt.imshow(ti(i_x[0]))
-            fig.add_subplot(1, 3, 2)
+            a = fig.add_subplot(1, 4, 1)
             plt.imshow(ti(x[0]))
-            fig.add_subplot(1, 3, 3)
+            a.set_title("X")
+            
+            a = fig.add_subplot(1, 4, 2)
+            plt.imshow(ti(noise[0]))
+            a.set_title("noise")
+            
+            a = fig.add_subplot(1, 4, 3)
+            plt.imshow(ti(i_x[0]))
+            a.set_title("X + noise")
+
+            a = fig.add_subplot(1, 4, 4)
             plt.imshow(ti(z1.data[0].cpu().view(1, 28, 28)))
+            a.set_title("denoise")
+
             plt.show()
             #exit(0)
             #plt.imshow(ti(z1.data.cpu()[0]))
