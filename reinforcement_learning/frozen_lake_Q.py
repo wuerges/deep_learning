@@ -26,6 +26,7 @@ rewards = []
 log = 100 * [0]
 
 for episode in range(500000):
+    #env.render()
 
     a = np.argmax(Q[s,:]  + np.random.randn(1, env.action_space.n)*(1./(episode+1)**2))
     s_, r, done, info = env.step(a)
@@ -37,6 +38,7 @@ for episode in range(500000):
 
     reward_t += r
     s = s_
+
 
     if done:
         print("win%:", sum(log[-100:])/100)
